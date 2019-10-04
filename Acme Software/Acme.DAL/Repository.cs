@@ -16,23 +16,24 @@ namespace Acme.DAL
         //Hmm, jag vill testa att använda en DB istället för List<T>
         //jag behöver kontakt med DB
         //det borde finnas hjälp att få i Framework
+        SqlConnection cn = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=ACME;Integrated Security=True");
 
         public Repository()
         {
             //constructor, dvs denna kod körs vid NEW
-            SqlConnection cn = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=ACME;Integrated Security=True");
+                    }
+
+        public void Save(Customer customer)
+        {
+            //_customers.Add(customer);
             cn.Open();
 
-            SqlCommand cm = new SqlCommand("INSERT INTO Customers (Name) VALUES ('Mimmi Pigg');");
+            SqlCommand cm = new SqlCommand("INSERT INTO Customers (Name) VALUES ('" + customer.Name + "');");
             cm.Connection = cn;
             cm.ExecuteNonQuery();
 
             cn.Close();
-        }
 
-        public void Save(Customer customer)
-        {
-            _customers.Add(customer);
         }
 
         public int NumberOfCustomers()
