@@ -30,8 +30,5 @@ namespace Acme.GUI
         }
     }
 
-    public class Customer
-    {
-        public string Name { get; set; }
-    }
+    
 }
