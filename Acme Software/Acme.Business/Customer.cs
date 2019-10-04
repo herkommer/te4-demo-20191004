@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Acme.GUI
+namespace Acme.Business
 {
     public class Customer
     {
