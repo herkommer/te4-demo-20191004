@@ -1,4 +1,5 @@
 ﻿using Acme.Business;
+using Acme.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,18 +32,6 @@ namespace Acme.GUI
         }
     }
 
-    public class Repository
-    {
-        private List<Customer> _customers = new List<Customer>();
-        public void Save(Customer customer)
-        {
-            _customers.Add(customer);
-        }
-
-        public int NumberOfCustomers()
-        {
-            return _customers.Count;
-        }
-    }
+    
     
 }
