@@ -13,7 +13,7 @@ namespace Acme.GUI
 {
     public partial class Form1 : Form
     {
-        List<Customer> CustomerStorage = new List<Customer>();
+        Repository repo = new Repository();
 
         public Form1()
         {
@@ -25,11 +25,24 @@ namespace Acme.GUI
         private void Button1_Click(object sender, EventArgs e)
         {
             Customer c = new Customer() { Name = textBox1.Text };
-            CustomerStorage.Add(c);
+            repo.Save(c);
 
-            MessageBox.Show("Antal kunder: " + CustomerStorage.Count);
+            MessageBox.Show("Antal kunder: " + repo.NumberOfCustomers());
         }
     }
 
+    public class Repository
+    {
+        private List<Customer> _customers = new List<Customer>();
+        public void Save(Customer customer)
+        {
+            _customers.Add(customer);
+        }
+
+        public int NumberOfCustomers()
+        {
+            return _customers.Count;
+        }
+    }
     
 }
