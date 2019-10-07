@@ -11,8 +11,7 @@ namespace Acme.DAL
 {
     public class Repository
     {
-        private List<Customer> _customers = new List<Customer>();
-
+        
         //Hmm, jag vill testa att använda en DB istället för List<T>
         //jag behöver kontakt med DB
         //det borde finnas hjälp att få i Framework
@@ -21,7 +20,7 @@ namespace Acme.DAL
         public Repository()
         {
             //constructor, dvs denna kod körs vid NEW
-                    }
+        }
 
         public void Save(Customer customer)
         {
@@ -38,7 +37,16 @@ namespace Acme.DAL
 
         public int NumberOfCustomers()
         {
-            return _customers.Count;
+            cn.Open();
+
+            SqlCommand cm = new SqlCommand("SELECT COUNT(Name) FROM Customers");
+            cm.Connection = cn;
+            int numberOfCustomers =int.Parse(cm.ExecuteScalar().ToString());
+
+            cn.Close();
+
+
+            return numberOfCustomers;
         }
     }
 }
