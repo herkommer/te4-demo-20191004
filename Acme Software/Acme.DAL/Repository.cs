@@ -24,7 +24,6 @@ namespace Acme.DAL
 
         public void Save(Customer customer)
         {
-            //_customers.Add(customer);
             cn.Open();
 
             SqlCommand cm = new SqlCommand("INSERT INTO Customers (Name) VALUES ('" + customer.Name + "');");
@@ -32,7 +31,6 @@ namespace Acme.DAL
             cm.ExecuteNonQuery();
 
             cn.Close();
-
         }
 
         public int NumberOfCustomers()
@@ -44,7 +42,6 @@ namespace Acme.DAL
             int numberOfCustomers =int.Parse(cm.ExecuteScalar().ToString());
 
             cn.Close();
-
 
             return numberOfCustomers;
         }
